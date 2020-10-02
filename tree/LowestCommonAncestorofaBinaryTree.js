@@ -12,9 +12,10 @@
  }
 /**
  * 1、递归：
- *    如何判断一个节点x是不是p,q的公共节点？
- *      1-p和q，一个在x左子树，一个在x右子树
- *      2-x这个节点是p，q在左子树或右子树；x这个节点是q，p在左子树或者右子树
+ *    1-如果以root为根的子树中包含p和q，则返回他们的公共祖先
+ *    2-如果只包含p，则返回p
+ *    3-如果只包含q，则返回q
+ *    4-如果都不包含，则返回null
  * 2、用map记录每个节点的父节点
  * @param {TreeNode} root
  * @param {TreeNode} p
@@ -22,27 +23,23 @@
  * @return {TreeNode}
  */
 var lowestCommonAncestor = function(root, p, q) {
-    var res
-    // root节点的子树中是否包含p节点或q节点
-    let inChild = function(root, p, q) {
-        if(!root) {
-            return false
-        }
-
-        // 左子树是否包含p,q中任意一个
-        let isInLeft = inChild(root.left, p, q)
-        // 右子树是否包含p,q中任意一个
-        let isInRight = inChild(root.right, p, q)
-        
-        // 找到最近公共祖先
-        if((isInLeft && isInRight) || ((isInLeft || isInRight) && (p == root || q == root)) ) {
-            res = root
-        }
-        // 包含任意一个都会返回true
-        return isInLeft || isInRight || (p == root || q == root)
+    if(!root || root == p || root == q) {
+        return root
     }
-    inChild(root, p, q)
-    return res
+
+    let left = lowestCommonAncestor(root.left, p, q)
+    let right = lowestCommonAncestor(root.right, p, q)
+
+    // 左边为空，整棵树的结果就是右子树的结果
+    if(!left) {
+        return right
+    }
+    // 右边为空，整棵树的结果就是左子树的结果
+    if(!right) {
+        return left
+    }
+    // 两边都不为空，就是左边一个右边一个，整棵树的结果就是root本身
+    return root
 };
 
 var lowestCommonAncestor1 = function(root, p, q) {
