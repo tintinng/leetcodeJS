@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var pathSum = function(root, sum) {
+            let res = [];
+            let curSum = 0;
+            let path = [];
+            let dfs = function(root, curSum, path) {
+                // 找到叶子节点
+                if (!root.left && !root.right) {
+                    if (curSum == sum) {
+                        res.push(new Array(path));
+                    }
+                } else {
+                    curSum += root.val;
+                    path.push(root.val);
+                    if (root.left) {
+                        dfs(root.left, curSum, path)
+                    }
+                    if (root.right) {
+                        dfs(root.right, curSum, path)
+                    }
+                }
+            }
+            dfs(root, curSum, path);
+
+            return res;
+        }
+    </script>
+</body>
+</html>

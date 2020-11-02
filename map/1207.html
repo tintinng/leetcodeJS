@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1207.独一无二的数</title>
+</head>
+<body>
+    <script>
+        /**
+         * @param {number[]} arr
+         * @return {boolean}
+         */
+        var uniqueOccurrences = function(arr) {
+            let map = new Map();
+            let set = new Set();
+            // 统计数组的数的个数 key为数字，value为对应数字的数量
+            arr.forEach((ele) => {
+                if (!map.has(ele)) {
+                    map.set(ele, 1);
+                } else {
+                    map.set(ele, map.get(ele) + 1);
+                }
+            })
+            // 遍历数量，看是否存在重复数量
+            for (const ele of map.values()) {
+                if (!set.has(ele)) {
+                    set.add(ele)
+                } else {
+                    // 存在则返回false
+                    return false;
+                }
+            }
+            // 遍历完，不存在则返回true
+            return true;
+        }
+    </script>
+</body>
+</html>
