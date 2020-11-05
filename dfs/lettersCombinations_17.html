@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+        * @param {string} digits
+        * @return {string[]}
+        */
+        var letterCombinations = function(digits) {
+            if (!digits) {
+                return [];
+            }
+            let chars = [
+                'abc', 'def', 
+                'ghi', 'jkl', 'mno', 
+                'pqrs','tuv', 'wxyz'
+            ]
+            let res = [''];
+
+            for (let i=0; i<digits.length; i++) {
+                let c = digits[i];
+                let arr = [];
+                for (let j=0; j<chars[c - '2'].length; j++) {
+                    for (let k=0; k<res.length; k++) {
+                        arr.push(res[k].concat(chars[c - '2'][j]))
+                    }
+                }
+                res = arr.slice(0, arr.length)
+            }
+
+            return res;
+        };
+    </script>
+</body>
+</html>
