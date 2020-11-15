@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/**
+ * @param {number[]} arr
+ * @return {number[]}
+ */
+ var sortByBits = function(arr) {
+    let compare = function(a, b) {
+        let x = a;
+        let y = b;
+        let countA = 0;
+        let countB = 0;
+        while (x) {
+            if (x % 2 === 1) {
+                countA ++;
+            }
+            x = x >> 1;
+        }
+        while (y) {
+            if (y % 2 === 1) {
+                countB ++;
+            }
+            y = y >> 1;
+        }
+
+        return countA - countB || a - b;
+    }
+
+    return arr.sort(compare);
+};
+
+sortByBits([4, 2, 1])
+    </script>
+</body>
+</html>

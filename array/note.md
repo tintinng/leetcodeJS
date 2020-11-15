@@ -1,20 +1,28 @@
 ## 拷贝数组的方法
-### slice
+### slice(浅拷贝)
 ```javascript
 let a = [1, 2, 3];
 let b = a.slice(0, a.length);
 ```
-### concat()
+### concat()(浅拷贝)
 ```javascript
 let a = [1, 2, 3];
 let b = a.concat();
 ```
-### ES6
+### Array.from()(浅拷贝)
+```javascript
+let a = [1, 2, 3];
+let c = Array.from(a);
+```
+### 收集运算符(浅拷贝)
 ```javascript
 let a = [1, 2, 3];
 let b = [...a];
-let c = Array.from(a);
 ```
+
+## 会创建新数组的方法
+### map
+### filter
 
 ## 集合转数组
 ### Array.from()
