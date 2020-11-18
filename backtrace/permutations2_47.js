@@ -14,7 +14,7 @@ var permuteUnique = function (nums) {
             return;
         }
         for (let i = 0; i < n; i++) {
-            // 保证每次填入的数字都是从左往右第一个没被填过的数字
+            // 保证每次填入的数字都是从左往右第一个没被填过的数字，注意
             if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) {
                 continue;
             }
