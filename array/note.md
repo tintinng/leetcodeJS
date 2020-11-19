@@ -53,6 +53,17 @@ map.set(1, 'a');
 map.set(2, 'b');
 [...map]; // [[1, 'a'], [2, 'b']]
 ```
+## 创建二维数组的方法
+### new Array() + for循环
+```javascript
+let chess = new Array(n);
+for (let i = 0; i < n; i++) {
+    chess[i] = new Array(n).fill(0);
+}
+
+// 注意这样是错误的：这样会让一数组的每一个项都指向新创建的这个  Array(n).fill(0)
+let chess = new Array(n).fill(new Array(n).fill(0));
+```
 
 ## 对象转数组
 ### Object.keys/Object.values/Object.entries
