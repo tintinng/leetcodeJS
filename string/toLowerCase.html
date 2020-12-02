@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var toLowerCase = function (str) {
+            let span = "a".charCodeAt() - "A".charCodeAt();
+            let res = "";
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] >= 'A' && str[i] <= 'Z') {
+                    res += String.fromCharCode(str[i].charCodeAt() + span);
+                } else {
+                    res += str[i];
+                }
+            }
+            return res;
+        };
+
+        console.log(toLowerCase('HEeLO'));
+    </script>
+</body>
+
+</html>

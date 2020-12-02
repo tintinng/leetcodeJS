@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /** 遍历字符串
+         * @param {number} n - a positive integer
+         * @return {number}
+         */
+        var hammingWeight = function (n) {
+            let count = 0;
+            let str = n.toString(2);
+            for (const c of str) {
+                if (c) {
+                    count++;
+                }
+            }
+            return count;
+        };
+
+        /** 移位+逻辑与运算
+         * @param {number} n - a positive integer
+         * @return {number}
+         */
+        var hammingWeight2 = function (n) {
+
+        };
+    </script>
+</body>
+
+</html>
