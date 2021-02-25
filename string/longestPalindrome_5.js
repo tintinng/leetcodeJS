@@ -2,7 +2,8 @@
  * @param {string} s
  * @return {string}
  */
-var longestPalindrome = function(s) {
+
+ var longestPalindrome = function(s) {
     if (!s || s.length == 1) {
         return s;
     }
@@ -36,3 +37,55 @@ var longestPalindrome = function(s) {
 
     return longestStr;
 };
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+/*
+var longestPalindrome = function(s) {
+    if (s.length === 0 || s.length === 1) {
+        return s
+    }
+    let maxLen = 0;
+    let maxStart = -1, maxEnd = -1;
+    // 遍历所有中心点
+    for (let i = 0; i < s.length; i++) {
+        let l = i - 1, r = i + 1;
+        let curLen = 1;
+        while (l >= 0 && r < s.length) {
+            if (s[l] === s[r]) {
+                curLen += 2;
+                l--, r++;
+                if (curLen > maxLen) {
+                    maxStart = l + 1;
+                    maxEnd = r - 1;
+                    maxLen = curLen;
+                }
+                continue
+            }
+            break;
+        }
+    }
+    for (let i = 0; i < s.length; i++) {
+        let l = i, r = i + 1;
+        let curLen = 0;
+        while (l >= 0 && r < s.length) {
+            if (s[l] == s[r]) {
+                curLen += 2;
+                l--, r++;
+                if (curLen > maxLen) {
+                    maxStart = l + 1;
+                    maxEnd = r - 1;
+                    maxLen = curLen;
+                }
+                continue
+            }
+            break;     
+        }
+    }
+
+    return maxStart === -1 ? s[0] : s.substring(maxStart, maxEnd + 1);
+};
+*/
+console.log(longestPalindrome("abcc"))
